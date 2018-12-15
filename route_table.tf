@@ -8,7 +8,7 @@ resource "aws_route" "public" {
   vpc_peering_connection_id = "${var.vpc_peering_connection_id}"
 }
 
-resource "aws_route" "requester_private" {
+resource "aws_route" "private" {
   count = "${length(var.private_route_table_ids)}"
   route_table_id = "${var.private_route_table_ids[count.index]}"
   destination_cidr_block = "${var.peer_cidr}"
